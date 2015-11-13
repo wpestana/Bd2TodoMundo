@@ -6,6 +6,7 @@
 package GUI;
 
 import DAO.UsuarioDAO;
+import Entity.Usuario;
 
 /**
  *
@@ -33,8 +34,8 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,13 +60,6 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 227, -1, -1));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 194, 105, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 225, 105, -1));
-
         jButton1.setText("Cadastre-se");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +67,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 263, -1, -1));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DAO/imagem/cinebook logo_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, -1, 295));
@@ -83,16 +78,14 @@ public class TelaInicial extends javax.swing.JFrame {
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         // TODO add your handling code here:
         UsuarioDAO usuarioProcura = new UsuarioDAO();
-        if(usuarioProcura.consultaNome(jTextField1.getText())!=null){
-        TelaUsuario usuario = new TelaUsuario(); 
-        usuario.setVisible(true); 
+        Usuario user = new Usuario();
+        user=usuarioProcura.consultaNome(jTextField1.getText());
+        if(user.getNome().equals(jTextField1.getText()) && user.getSenha().equals(jPasswordField1.getText())){
+            TelaUsuario usuario = new TelaUsuario(); 
+            usuario.setVisible(true); 
         dispose();
         }
     }//GEN-LAST:event_botaoLoginActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -144,7 +137,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

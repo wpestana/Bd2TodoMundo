@@ -45,13 +45,13 @@ public class UsuarioDAO {
     public Usuario consultaNome(String nome) {
         Usuario usuario = new Usuario();
         try {
-            System.out.println("procurado por: "+nome);
 //            PreparedStatement p = c.prepareStatement("Select * from" + nomeDoEsquema + ".usuario;");            
-                PreparedStatement p = c.prepareStatement("Select * from " + nomeDoEsquema + "where nome = ?;");
+                PreparedStatement p = c.prepareStatement("Select * from " + nomeDoEsquema + " where nome = ?;");
                 p.setString(1,nome);
             ResultSet r = p.executeQuery();
             while (r.next()){
-                System.out.println(" user "+r.getString("nome"));
+                System.out.println("ABasdfasdfasd");
+                System.out.println("User: "+r.getString("nome"));
                 usuario.setNome(r.getString("nome"));
                 usuario.setSenha(r.getString("senha"));
             }
@@ -59,6 +59,7 @@ public class UsuarioDAO {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+        System.out.println("procurado por: "+nome+" nome encontrado: "+usuario.getNome());
         return usuario;
     }
     
