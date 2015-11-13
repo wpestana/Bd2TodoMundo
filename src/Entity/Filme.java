@@ -56,4 +56,8 @@ public class Filme {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public void setIdFilme(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
