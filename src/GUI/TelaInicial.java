@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import DAO.UsuarioDAO;
+
 /**
  *
  * @author Welington
@@ -80,9 +82,12 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         // TODO add your handling code here:
+        UsuarioDAO usuarioProcura = new UsuarioDAO();
+        if(usuarioProcura.consultaNome(jTextField1.getText())!=null){
         TelaUsuario usuario = new TelaUsuario(); 
         usuario.setVisible(true); 
         dispose();
+        }
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -94,6 +99,7 @@ public class TelaInicial extends javax.swing.JFrame {
         TelaCadastro cadastro = new TelaCadastro(); 
         cadastro.setVisible(true); 
         dispose(); 
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

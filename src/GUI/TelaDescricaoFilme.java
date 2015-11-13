@@ -42,7 +42,8 @@ public class TelaDescricaoFilme extends javax.swing.JFrame {
         duracao = new javax.swing.JTextField();
         genero = new javax.swing.JTextField();
         ator = new javax.swing.JTextField();
-        descricao = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descricao = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -110,7 +111,15 @@ public class TelaDescricaoFilme extends javax.swing.JFrame {
         getContentPane().add(duracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 80, -1));
         getContentPane().add(genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 110, -1));
         getContentPane().add(ator, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 230, -1));
-        getContentPane().add(descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 290, 60));
+
+        descricao.setColumns(10);
+        descricao.setLineWrap(true);
+        descricao.setRows(5);
+        descricao.setToolTipText("");
+        descricao.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(descricao);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 220, 80));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,7 +197,7 @@ public class TelaDescricaoFilme extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ator;
-    private javax.swing.JTextField descricao;
+    private javax.swing.JTextArea descricao;
     private javax.swing.JTextField duracao;
     private javax.swing.JTextField genero;
     private javax.swing.JLabel jLabel1;
@@ -198,6 +207,7 @@ public class TelaDescricaoFilme extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton pesquisar;
     private javax.swing.JTextField titulo;
     private javax.swing.JButton voltar;
