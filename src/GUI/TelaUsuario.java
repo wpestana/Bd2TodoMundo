@@ -29,6 +29,7 @@ public class TelaUsuario extends javax.swing.JFrame {
 
         PopUpProcuraFilme = new javax.swing.JPopupMenu();
         descricao = new javax.swing.JButton();
+        descricao1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,7 +42,16 @@ public class TelaUsuario extends javax.swing.JFrame {
                 descricaoActionPerformed(evt);
             }
         });
-        getContentPane().add(descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 170, 60));
+        getContentPane().add(descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 180, 30));
+
+        descricao1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        descricao1.setText("Procurar Usuario");
+        descricao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descricao1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(descricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 180, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DAO/imagem/cinebook cadastrar.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -56,6 +66,13 @@ public class TelaUsuario extends javax.swing.JFrame {
         descricao.setVisible(true); 
         dispose();
     }//GEN-LAST:event_descricaoActionPerformed
+
+    private void descricao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricao1ActionPerformed
+        // TODO add your handling code here:
+        ConsultaUsuarios consultaUser = new ConsultaUsuarios();
+        consultaUser.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_descricao1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,6 +113,7 @@ public class TelaUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu PopUpProcuraFilme;
     private javax.swing.JButton descricao;
+    private javax.swing.JButton descricao1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

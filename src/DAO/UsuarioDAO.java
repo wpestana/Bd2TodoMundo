@@ -51,16 +51,19 @@ public class UsuarioDAO {
                 p.setString(1,nome);
             ResultSet r = p.executeQuery();
             while (r.next()){
-                System.out.println("ABasdfasdfasd");
-                System.out.println("User: "+r.getString("nome"));
+                //System.out.println("ABasdfasdfasd");
+                //System.out.println("User: "+r.getString("nome"));
                 usuario.setNome(r.getString("nome"));
+                usuario.setApelido(r.getString("apelido"));
                 usuario.setSenha(r.getString("senha"));
+                usuario.setDataNascimento(r.getString("datanascimento"));
+                usuario.setEmail(r.getString("email"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        System.out.println("procurado por: "+nome+" nome encontrado: "+usuario.getNome());
+        //System.out.println("procurado por: "+nome+" nome encontrado: "+usuario.getNome());
         return usuario;
     }
     
@@ -157,6 +160,87 @@ public class UsuarioDAO {
             return false;
         }
     return true;
+    }
+    public Usuario consultaApelido(String apelido) {
+        Usuario usuario = new Usuario();
+        try {
+                PreparedStatement p = c.prepareStatement("Select * from " + nomeDoEsquema + " where apelido = ?;");
+                p.setString(1,apelido);
+            ResultSet r = p.executeQuery();
+            while (r.next()){
+                //System.out.println("User: "+r.getString("nome"));
+                usuario.setNome(r.getString("nome"));
+                usuario.setApelido(r.getString("apelido"));
+                usuario.setSenha(r.getString("senha"));
+                usuario.setDataNascimento(r.getString("datanascimento"));
+                usuario.setEmail(r.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return usuario;
+    }
+    
+    public Usuario consultaTelefone(String telefone) {
+        Usuario usuario = new Usuario();
+        try {
+                PreparedStatement p = c.prepareStatement("Select * from " + nomeDoEsquema + " where telefone = ?;");
+                p.setString(1,telefone);
+            ResultSet r = p.executeQuery();
+            while (r.next()){
+                usuario.setNome(r.getString("nome"));
+                usuario.setApelido(r.getString("apelido"));
+                usuario.setSenha(r.getString("senha"));
+                usuario.setDataNascimento(r.getString("datanascimento"));
+                usuario.setEmail(r.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+        return usuario;
+    }
+    public Usuario consultaDataNasc(String dataNascimento) {
+        Usuario usuario = new Usuario();
+        try {
+                PreparedStatement p = c.prepareStatement("Select * from " + nomeDoEsquema + " where datanascimento = ?;");
+                p.setDate(1,Date.valueOf(dataNascimento));
+            ResultSet r = p.executeQuery();
+            while (r.next()){
+                usuario.setNome(r.getString("nome"));
+                usuario.setApelido(r.getString("apelido"));
+                usuario.setSenha(r.getString("senha"));
+                usuario.setDataNascimento(r.getString("datanascimento"));
+                usuario.setEmail(r.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+        return usuario;
+    }
+    public Usuario consultaEmail(String email) {
+        Usuario usuario = new Usuario();
+        try {
+                PreparedStatement p = c.prepareStatement("Select * from " + nomeDoEsquema + " where email = ?;");
+                p.setString(1,email);
+            ResultSet r = p.executeQuery();
+            while (r.next()){
+                usuario.setNome(r.getString("nome"));
+                usuario.setApelido(r.getString("apelido"));
+                usuario.setSenha(r.getString("senha"));
+                usuario.setDataNascimento(r.getString("datanascimento"));
+                usuario.setEmail(r.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+        return usuario;
     }
     
 }
