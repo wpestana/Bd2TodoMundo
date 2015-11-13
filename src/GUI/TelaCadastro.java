@@ -149,7 +149,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel5.setText("senha");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/claquete-porta-retratos-ima-ima.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DAO/imagem/claquete-porta-retratos-ima-ima.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 377));
 
         pack();
@@ -169,24 +169,25 @@ public class TelaCadastro extends javax.swing.JFrame {
                 senha.setText("");
             } else {
                 UsuarioDAO cliente = new UsuarioDAO(); 
-                Usuario usuario =  cliente.consultaNome(nome.getText()); 
-                if(usuario == null){
-                    usuario = new Usuario(); 
+                //Usuario usuario =  cliente.consultaNome(nome.getText()); 
+//                if(usuario.getNome() == null){
+                    Usuario usuario = new Usuario(); 
                     usuario.setDataNascimento(datanasc.getText());
                     usuario.setEmail(email.getText());
                     usuario.setNome(nome.getText());
-                    usuario.setNomeUsuario(login.getText());
+                    usuario.setApelido(login.getText());
                     usuario.setTelefone(tel.getText());
                     usuario.setSenha(senha.getText()); 
-                    cliente.inserirUsuario(usuario);
-                    JOptionPane.showMessageDialog(null, "Cadastrado!"); 
-                    confimacao.setText(""); 
-                    senha.setText("");
-                    tel.setText(""); 
-                    login.setText("");
-                    nome.setText("");
-                    email.setText(""); 
-                    datanasc.setText("");
+                    if(cliente.inserirUsuario(usuario)){
+                        JOptionPane.showMessageDialog(null, "Cadastrado!"); 
+                        confimacao.setText(""); 
+                        senha.setText("");
+                        tel.setText(""); 
+                        login.setText("");
+                        nome.setText("");
+                        email.setText(""); 
+                        datanasc.setText("");
+                    //}
                 }else {
                     JOptionPane.showMessageDialog(null, "Usuário Já Cadastrado");
                 }

@@ -7,6 +7,7 @@ package DAO;
 
 import Entity.Usuario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,15 +66,17 @@ public class UsuarioDAO {
     
     public boolean inserirUsuario(Entity.Usuario usuario){
         try {
-            PreparedStatement p = c.prepareStatement("insert into "+nomeDoEsquema+" (nome, apelido, senha, email, dataNascimento) values ?,?,?,?,?;");
+            PreparedStatement p = c.prepareStatement("insert into "+nomeDoEsquema+" (nome, apelido, senha, email, dataNascimento) values (?,?,?,?,?);");   
+            
             p.setString(1,usuario.getNome());        
             p.setString(2,usuario.getApelido());
             p.setString(3,usuario.getSenha());
             p.setString(4,usuario.getEmail());
-            p.setString(5,usuario.getDataNascimento());
-            ResultSet r = p.executeQuery();
+            p.setDate(5,Date.valueOf(usuario.getDataNascimento()));
+            //ResultSet r = p.executeQuery();
+            p.executeQuery();
         }catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return true;
